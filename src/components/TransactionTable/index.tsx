@@ -1,6 +1,13 @@
+import { useEffect } from "react"
+import { api } from "../../services/api"
 import { Container } from "./styles"
 
 export function TransactionTable() {
+
+  useEffect(()=>{
+    api.get('transactions')
+    .then(response=>console.log(response.data))
+  },[])
   return (
     <Container> 
       <table>
@@ -14,23 +21,18 @@ export function TransactionTable() {
         </thead>
         <tbody>
           <tr>
-            <td>  Desenvolvimento de website </td>
-            <td>R$12000</td>
+            <td >  Desenvolvimento de website </td>
+            <td className="deposit">R$12000</td>
             <td>Desenvolvimento</td>
             <td>16 de fevereireo</td>
           </tr>
           <tr>
-            <td>  Desenvolvimento de website </td>
-            <td>R$12000</td>
+            <td> Aluguel </td>
+            <td className="withDraw">-R$1100</td>
             <td>Desenvolvimento</td>
-            <td>16 de fevereireo</td>
+            <td>17/02/22</td>
           </tr>
-          <tr>
-            <td>  Desenvolvimento de website </td>
-            <td>R$12000</td>
-            <td>Desenvolvimento</td>
-            <td>16 de fevereireo</td>
-          </tr>
+         
         </tbody>
       </table> 
       </Container>
